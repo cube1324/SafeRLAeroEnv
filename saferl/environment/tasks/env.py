@@ -34,15 +34,14 @@ class BaseEnv(gym.Env):
         self.reward_manager = RewardManager(env_config[REWARD])
         self.status_manager = StatusManager(env_config[STATUS])
 
+        self.render_config = {}
+        self.renderer = None
         # Create renderer
         if RENDER in env_config.keys():
             render_class = env_config[RENDER]["class"] if "class" in env_config[RENDER].keys() else None
             self.render_config = env_config[RENDER]["config"] if "config" in env_config[RENDER].keys() else {}
             if render_class is not None:
                 self.renderer = render_class(**self.render_config)
-        else:
-            self.render_config = {}
-            self.renderer = None
 
         # Create default success/failure processors
         has_failure_processor = False
