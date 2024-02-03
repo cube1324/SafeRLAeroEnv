@@ -5,8 +5,6 @@ from saferl.environment.tasks.render import BaseRenderer
 if "DISPLAY" in os.environ.keys():
     from gym.envs.classic_control import rendering
 
-from gym.envs.classic_control import rendering
-
 
 class DockingRenderer(BaseRenderer):
     """
